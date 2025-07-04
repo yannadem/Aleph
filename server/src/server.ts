@@ -11,5 +11,5 @@ const PORT = process.env.PORT || 3000;
 app.use('/api/crypto', cryptoRoutes);
 
 app.listen(PORT, () => {
-  console.log(`ALEPH listening on port ${PORT} 📈`)
+  console.log(`ALEPH listening on port ${PORT} 💥📈`)
 })
