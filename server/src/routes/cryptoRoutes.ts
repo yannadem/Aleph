@@ -1,10 +1,9 @@
-import {Router} from 'express';
+import { Router } from 'express';
+import getCryptoData from '../controllers/cryptoController';
 
 const router = Router();
 
-// GET
-router.get('/', (req, res) => {
-  res.json({message: 'Incoming Crypto Data!'});
-});
+// GET /crypto
+router.get('/', getCryptoData);
 
 export default router;
