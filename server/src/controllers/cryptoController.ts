@@ -1,13 +1,10 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 
-const pair: string = 'BTCUSD';
-const assetTickerInfo: string = 'XXBTZUSD';
-
 interface KrakenTickerResponse {
   error: string[];
   result: {
-    [assetTickerInfo: string]: {
+    [key: string]: {
       c: string[];
     };
   };
@@ -16,18 +13,26 @@ interface KrakenTickerResponse {
 
 const getCryptoData = async (req: Request, res: Response): Promise<void> => {
 
+  const pair: string = req.params.pair;
+
   try {
 
     const response = await axios.get<KrakenTickerResponse>(`https://api.kraken.com/0/public/Ticker?pair=${pair}`);
 
-    const data = response.data;
-    const lastTrade = data.result?.XXBTZUSD?.c[0]; // last trade closed
+    const result = response.data.result;
 
-    if(!lastTrade){
-      res.status(404).json('Price not found');
+    // Kraken Ticker for each pair, e.g. XXBTZUSD (BTCUSD)
+    const assetTickerInfo = Object.keys(result)[0];
+
+    // Kraken last trade closed
+    const lastTrade = result[assetTickerInfo].c[0];
+
+
+    if (!lastTrade) {
+      res.status(404).json(`${pair} lastTrade not found`);
     }
 
-    res.status(200).json({pair, lastTrade});
+    res.status(200).json({ pair, lastTrade });
 
   } catch (error) {
 

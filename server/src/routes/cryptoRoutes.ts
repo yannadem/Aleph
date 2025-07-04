@@ -4,6 +4,6 @@ import getCryptoData from '../controllers/cryptoController';
 const router = Router();
 
 // GET /crypto
-router.get('/', getCryptoData);
+router.get('/:pair', getCryptoData);
 
 export default router;
