@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import express from 'express';
-import cryptoRoutes from './routes/cryptoRoutes'
+import cryptoRoutes from './routes/cryptoRoutes';
 
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+
+const PORT = process.env.PORT || 3000;
 
 app.use('/api/crypto', cryptoRoutes);
 
