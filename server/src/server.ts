@@ -1,13 +1,12 @@
 import express from 'express';
+import cryptoRoutes from './routes/cryptoRoutes'
 
 
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello from Aleph!')
-})
+app.use('/api/crypto', cryptoRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`ALEPH listening on port ${PORT} 📈`)
 })
