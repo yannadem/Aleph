@@ -7,6 +7,7 @@ function App() {
 
   return (
     <>
+    <div className='logo'>Aleph</div>
     <SearchBar></SearchBar>
     </>
   )
