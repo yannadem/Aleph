@@ -33,6 +33,7 @@ const getCryptoData = async (req: Request, res: Response): Promise<void> => {
     }
 
     res.status(200).json({ pair, lastTrade });
+    console.log(`res sent:${pair}: ${lastTrade}`)
 
   } catch (error) {
 

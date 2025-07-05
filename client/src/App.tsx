@@ -1,4 +1,5 @@
 
+import SearchBar from './components/searchBar'
 import './App.css'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
 
   return (
     <>
+    <SearchBar></SearchBar>
     </>
   )
 }
