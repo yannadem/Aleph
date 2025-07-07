@@ -4,7 +4,23 @@
 
 }
 
-.logo {
-  color: yellow;
+.logoBox {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  background-color: white;
+}
+
+.alephPic {
+  width: 5svw;
+  background-color: white;
+  padding: 2svw
+}
+
+.alephTxt {
   font-size: x-large;
+  padding: 2svw;
+  color: black;
+  background-color: white;
 }

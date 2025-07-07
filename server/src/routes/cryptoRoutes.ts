@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import getCryptoData from '../controllers/cryptoController';
+import {getTicker, getOHLC} from '../controllers/cryptoController';
 
 const router = Router();
 
-// GET /crypto
-router.get('/:pair', getCryptoData);
+// GET ticker
+router.get('/ticker/:pair', getTicker);
+
+// GET Ohlc
+router.get('/OHLC/:pair', getOHLC);
 
 export default router;

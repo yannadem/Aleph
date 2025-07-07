@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './searchBar.css';
 
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -62,7 +63,7 @@ const SearchBar = () => {
         >
         </input>
         <button
-          type='submit'>
+          type="submit">
           Search
         </button>
       </form>

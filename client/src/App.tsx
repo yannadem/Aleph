@@ -2,13 +2,17 @@
 import SearchBar from './components/searchBar'
 import './App.css'
 
-function App() {
+function App () {
 
 
   return (
     <>
-    <div className='logo'>Aleph</div>
-    <SearchBar></SearchBar>
+      <div className="logoBox">
+        <img src="/aleph.png" className="alephPic"></img>
+        <div className="alephTxt">Aleph</div>
+      </div >
+      <div></div>
+      <SearchBar></SearchBar>
     </>
   )
 }
