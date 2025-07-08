@@ -4,7 +4,6 @@ import './searchBar.css';
 
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
-console.log(apiUrl);
 
 
 const SearchBar = () => {
@@ -35,7 +34,7 @@ const SearchBar = () => {
 
       try {
 
-        const response = await axios.get(`${apiUrl}/api/crypto/${pair}`)
+        const response = await axios.get(`${apiUrl}/api/crypto/ticker/${pair}`)
         console.log(response);
         const { lastTrade: fetchedPrice } = response.data;
         setLastTrade(Number(fetchedPrice));

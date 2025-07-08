@@ -131,6 +131,7 @@ const getOHLC = async (req: Request, res: Response) => {
     }));
 
     res.status(200).json({ modData });
+    console.log(`OHLC data sent for ${pair}`);
 
   } catch (error) {
 
