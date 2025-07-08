@@ -1,5 +1,6 @@
 
-import SearchBar from './components/searchBar'
+import SearchBar from './components/SearchBar'
+import CryptoChart from './components/CryptoChart'
 import './App.css'
 
 function App () {
@@ -13,6 +14,7 @@ function App () {
       </div >
       <div></div>
       <SearchBar></SearchBar>
+      <CryptoChart></CryptoChart>
     </>
   )
 }
