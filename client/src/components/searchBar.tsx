@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './searchBar.css';
+import '../styles/searchBar.css';
 
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -59,9 +59,8 @@ const SearchBar = ({pair, setPair}: SearchBarProps) => {
           type='text'
           placeholder='BTCUSD'
           value={pair}
-          onChange={(e) => setPair(e.target.value.toUpperCase())}
-        >
-        </input>
+          onChange={(e) => setPair(e.target.value.trim().toUpperCase())}
+        />
         <button
           type="submit">
           Update

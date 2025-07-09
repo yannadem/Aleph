@@ -16,7 +16,7 @@ const MainPage = () => {
   return (
     <div>
       <div className="logoBox">
-        <img src="/aleph.png" className="alephPic"></img>
+        <img src="/aleph.png" className="alephPic" alt="aleph logo"></img>
         <div className="alephTxt">Aleph</div>
       </div >
       <SearchBar pair={pair} setPair={setPair}></SearchBar>

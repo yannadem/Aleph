@@ -93,6 +93,7 @@ const getOHLC = async (req: Request, res: Response) => {
 
     const response = await axios.get<KrakenOHLCResponse>(`https://api.kraken.com/0/public/OHLC?pair=${pair}&interval=${interval}&since=${since}`);
 
+    // error sent by Kraken API within the response
     const krakenError = response.data.error;
 
     const result = response.data.result;
@@ -102,7 +103,6 @@ const getOHLC = async (req: Request, res: Response) => {
       res.status(400).json(krakenError);
       return;
     }
-
 
 
     // Fileter the data, we only want the key = Kraken pair, not 'last' key = metadata
