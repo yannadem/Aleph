@@ -33,24 +33,38 @@ Chart.register(
   Filler,
 );
 
+interface CryptoChartProps {
+  pair: string;
+  timeFrame: number;
+}
+
+interface OhlcPoint {
+  time: number;
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  vwap: string;
+  volume: string;
+  count: number;
+}
+
+interface OhlcResponse {
+  data: {
+    modData: OhlcPoint[];
+  }
+}
+
 interface ChartPoint {
   time: number;
-  // open: number;
-  // high: number;
-  // low: number;
-  close: number;
+  close: string;
 }
 
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const CryptoChart = () => {
-
-  // place holder for pair / interval
-  const [pair, setPair] = useState('BTCUSD');
-  const [interval, setInterval] = useState(1);
-  // setPair('ETHUSD');
-  // setInterval(1);
+const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
+  console.log(pair,timeFrame);
 
   // state to store OHLC data
   const [chartData, setChartData] = useState<ChartPoint[]>([]);
@@ -66,10 +80,12 @@ const CryptoChart = () => {
 
       try {
 
-        const response = await axios.get<ChartPoint[]>(`${apiUrl}/api/crypto/OHLC/${pair}?interval=${interval}`)
+        const response : OhlcResponse = await axios.get(`${apiUrl}/api/crypto/OHLC/${pair}?interval=${timeFrame}`)
+        console.log(response);
 
         // destructuring response to only keep time & close
-        const formattedData: ChartPoint[] = response.data['modData'].map(({ time, close }) => ({ time, close }));
+        const ohlcData : OhlcPoint[] = response.data.modData;
+        const formattedData: ChartPoint[] = ohlcData.map(({ time, close }) => ({ time, close }));
 
         setChartData(formattedData);
 
@@ -84,7 +100,7 @@ const CryptoChart = () => {
 
     fetchChartData();
 
-  }, []);
+  }, [pair, timeFrame]);
 
   // useEffect to Create Line Chart once canvas DOM has rendered
   useEffect(() => {
@@ -130,8 +146,8 @@ const CryptoChart = () => {
       myChart.destroy();
     };
 
-    // rerun useEffect when ChartData is updated
-  }, [chartData, pair, interval]);
+    // rerun useEffect when ChartData or Pair or timeFrame is updated
+  }, [chartData]);
 
 
   return (

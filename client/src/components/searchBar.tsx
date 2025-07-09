@@ -5,14 +5,15 @@ import './searchBar.css';
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
 
+interface SearchBarProps {
+  pair: string;
+  setPair: React.Dispatch<React.SetStateAction<string>>;
+}
 
-const SearchBar = () => {
+const SearchBar = ({pair, setPair}: SearchBarProps) => {
 
   // Error visible on UI
   const [error, setError] = useState<string>('');
-
-  // Crypto pair e.g. BTCUSD
-  const [pair, setPair] = useState<string>('');
 
   // Last Trade Price (converted to number)
   const [lastTrade, setLastTrade] = useState<number | null>(null);
@@ -63,7 +64,7 @@ const SearchBar = () => {
         </input>
         <button
           type="submit">
-          Search
+          Update
         </button>
       </form>
       <div>
