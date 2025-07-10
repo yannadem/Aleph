@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import CryptoChart from "../components/CryptoChart";
 import ChartSettings from '../components/ChartSettings';
 import CryptoBoard from '../components/CryptoBoard';
+import '../styles/MainPage.css'
 
 const MainPage = () => {
 
@@ -24,9 +25,16 @@ const MainPage = () => {
         <div className="alephTxt">Aleph</div>
       </div >
       <SearchBar setError={setError} setPair={setActivePair}></SearchBar>
-      <CryptoBoard pair={activePair} error={error} setError={setError}></CryptoBoard>
-      <CryptoChart pair={activePair} timeFrame={timeFrame}></CryptoChart>
-      <ChartSettings timeFrame={timeFrame} setTimeFrame={setTimeFrame}></ChartSettings>
+      <div id="mainBoard" className="mainBoard">
+        <div id="dataBox" className="dataBox">
+          <CryptoBoard pair={activePair} error={error} setError={setError}></CryptoBoard>
+        </div>
+        <div id="chartBox" className="chartBox">
+          <h2>Crypto Chart</h2>
+          <ChartSettings timeFrame={timeFrame} setTimeFrame={setTimeFrame}></ChartSettings>
+          <CryptoChart pair={activePair} timeFrame={timeFrame}></CryptoChart>
+        </div>
+      </div>
     </div>
   )
 

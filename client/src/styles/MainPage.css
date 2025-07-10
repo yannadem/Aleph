@@ -1,0 +1,12 @@
+.mainBoard {
+  display:flex;
+  width: 100%;
+}
+
+.dataBox {
+  width: 30%;
+}
+
+.chartBox {
+  width: 70%;
+}

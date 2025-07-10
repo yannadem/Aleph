@@ -152,7 +152,6 @@ const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
 
   return (
     <div>
-      <h2>Crypto Chart</h2>
       <canvas ref={canvasRef}></canvas>
     </div>
   );
