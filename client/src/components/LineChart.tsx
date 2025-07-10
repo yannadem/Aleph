@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import {
   Chart,
@@ -17,7 +17,6 @@ import {
 } from "chart.js";
 
 import 'chartjs-adapter-date-fns'; // parse and format UNIX timestamps
-import axios from 'axios';
 
 // Register chart.js components
 Chart.register(
@@ -33,11 +32,6 @@ Chart.register(
   Filler,
 );
 
-interface CryptoChartProps {
-  pair: string;
-  timeFrame: number;
-}
-
 interface OhlcPoint {
   time: number;
   open: string;
@@ -49,59 +43,18 @@ interface OhlcPoint {
   count: number;
 }
 
-interface OhlcResponse {
-  data: {
-    modData: OhlcPoint[];
-  }
+interface LineChartProps {
+  pair: string;
+  chartData: OhlcPoint[];
 }
 
-interface ChartPoint {
-  time: number;
-  close: string;
-}
 
-// Back End URL
-const apiUrl = import.meta.env.VITE_API_URL;
-
-const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
-  console.log(pair,timeFrame);
-
-  // state to store OHLC data
-  const [chartData, setChartData] = useState<ChartPoint[]>([]);
+const LineChart = ({pair, chartData}: LineChartProps) => {
 
 
   // create reference to <canvas> (DOM node)
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // useEffect to fetch OHLC data from API (dep: pair, timeFrame)
-  useEffect(() => {
-
-    const fetchChartData = async () => {
-
-      try {
-
-        const response : OhlcResponse = await axios.get(`${apiUrl}/api/crypto/OHLC/${pair}?interval=${timeFrame}`)
-        console.log(response);
-
-        // destructuring response to only keep time & close
-        const ohlcData : OhlcPoint[] = response.data.modData;
-        // !! chartjs-adapter-date-fns work with time in milliseconds, Kraken data in seconds
-        const formattedData: ChartPoint[] = ohlcData.map(({ time, close }) => ({ time: time * 1000, close }));
-
-        setChartData(formattedData);
-
-
-      } catch (error) {
-
-        console.error(`Error fetching OHLC data for ${pair}: ${error}`);
-
-      }
-
-    }
-
-    fetchChartData();
-
-  }, [pair, timeFrame]);
 
   // useEffect to Create Line Chart once canvas DOM has rendered (dep: OHLCData)
   useEffect(() => {
@@ -158,4 +111,4 @@ const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
   );
 }
 
-export default CryptoChart;
+export default LineChart;
