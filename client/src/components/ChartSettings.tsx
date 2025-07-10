@@ -6,7 +6,7 @@ interface ChartSettingsProps {
 const ChartSettings = ({ timeFrame, setTimeFrame }: ChartSettingsProps) => {
 
   // Possible times frames / time intervals (minutes)
-   // Possible values: [1, 5, 15, 30, 60, 240, 1440, 10080, 21600]
+  // Possible values: [1, 5, 15, 30, 60, 240, 1440, 10080, 21600]
   const allowedTimeFrames = [
     {label: '1 minute', value: 1},
     {label: '5 minutes', value: 5},

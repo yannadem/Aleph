@@ -1,10 +1,12 @@
 * {
-  padding: 10px;
+  padding: 5px;
 }
 
 button {
+  font-size: medium;
   margin: 10px;
-  border: solid grey;
+  border: solid #272C35;
+  background-color: #272C35;
   border-radius: 10px;
-  color: grey;
+  color: white;
 }

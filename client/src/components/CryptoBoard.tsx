@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import {round2} from "../utils/round";
+import { round2 } from "../utils/round";
 
 interface CryptoBoardProps {
   pair: string;
-  error: string;
-  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface TickerResponseData {
@@ -23,7 +21,14 @@ interface TickerResponseData {
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const CryptoBoard = ({ pair, error, setError }: CryptoBoardProps) => {
+const CryptoBoard = ({ pair }: CryptoBoardProps) => {
+
+  // crypto & currency
+  const crypto = pair.substring(0, 3);
+  const ccy = pair.substring(3, 6);
+
+  // Fetching Error visible on UI
+  const [error, setError] = useState<string>('');
 
   // Ticker Data
   const [ask, setAsk] = useState<number | null>(null);
@@ -72,11 +77,8 @@ const CryptoBoard = ({ pair, error, setError }: CryptoBoardProps) => {
         setHigh(Number(fetchedHigh));
         setOpen(Number(fetchedOpen));
 
-
-
-
         // reset error
-        setError("");
+        setError('');
 
       } catch (error) {
 
@@ -94,22 +96,50 @@ const CryptoBoard = ({ pair, error, setError }: CryptoBoardProps) => {
 
   return (
     <>
-      <h2>Crypto Board</h2>
-      <div>{pair}</div>
+      <h2>1 {crypto} = {lastTrade?.toLocaleString()} {ccy}</h2>
       <div>
         {error ?
           <div style={{ color: "red" }}>{error}</div> :
           <div>
-            <div>Bid/Ask: {bid?.toLocaleString()} / {ask?.toLocaleString()}</div>
-            <div>Last Trade: {lastTrade?.toLocaleString()}</div>
-            <div />
-            <div>Volume traded: {volume?.toLocaleString()}</div>
-            <div>Number of Trades: {numTrades?.toLocaleString()}</div>
-            <div>Volume Weighted Average Price: {vwap?.toLocaleString()}</div>
-            <div />
-            <div>Today High: {high?.toLocaleString()}</div>
-            <div>Today Low: {low?.toLocaleString()}</div>
-            <div>Today Open: {open?.toLocaleString()}</div>
+            <h3>{crypto} Today</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Bid/Ask</td>
+                  <td>{bid?.toLocaleString()} / {ask?.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Last Trade</td>
+                  <td>{lastTrade?.toLocaleString()}</td>
+                </tr>
+                <tr><td colSpan={2}>&nbsp;</td></tr>
+                <tr>
+                  <td>Volume traded </td>
+                  <td>{volume?.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Num of Trades</td>
+                  <td>{numTrades?.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>VWAP</td>
+                  <td>{vwap?.toLocaleString()}</td>
+                </tr>
+                <tr><td colSpan={2}>&nbsp;</td></tr>
+                <tr>
+                  <td>Today High</td>
+                  <td>{high?.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Today Low</td>
+                  <td>{low?.toLocaleString()}</td>
+                </tr>
+                <tr>
+                  <td>Today Open</td>
+                  <td>{open?.toLocaleString()}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         }
       </div >

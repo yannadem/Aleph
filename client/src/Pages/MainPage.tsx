@@ -10,13 +10,11 @@ const MainPage = () => {
   // Active Crypto pair (e.g. BTCUSD) used in Board and Chart components
   // Passed down as "pair" in child components
   const [activePair, setActivePair] = useState<string>('BTCUSD');
+  const crypto = activePair.substring(0,3);
 
   // Time frame (interval) in minutes
   // Possible values: [1, 5, 15, 30, 60, 240, 1440, 10080, 21600]
   const [timeFrame, setTimeFrame] = useState(1);
-
-  // Error visible on UI
-  const [error, setError] = useState<string>('');
 
   return (
     <div>
@@ -24,13 +22,13 @@ const MainPage = () => {
         <img src="/aleph.png" className="alephPic" alt="aleph logo"></img>
         <div className="alephTxt">Aleph</div>
       </div >
-      <SearchBar setError={setError} setPair={setActivePair}></SearchBar>
+      <SearchBar setPair={setActivePair}></SearchBar>
       <div id="mainBoard" className="mainBoard">
         <div id="dataBox" className="dataBox">
-          <CryptoBoard pair={activePair} error={error} setError={setError}></CryptoBoard>
+          <CryptoBoard pair={activePair}></CryptoBoard>
         </div>
         <div id="chartBox" className="chartBox">
-          <h2>Crypto Chart</h2>
+          <h2>{crypto} Chart</h2>
           <ChartSettings timeFrame={timeFrame} setTimeFrame={setTimeFrame}></ChartSettings>
           <CryptoChart pair={activePair} timeFrame={timeFrame}></CryptoChart>
         </div>

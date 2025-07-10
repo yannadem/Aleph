@@ -85,7 +85,8 @@ const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
 
         // destructuring response to only keep time & close
         const ohlcData : OhlcPoint[] = response.data.modData;
-        const formattedData: ChartPoint[] = ohlcData.map(({ time, close }) => ({ time, close }));
+        // !! chartjs-adapter-date-fns work with time in milliseconds, Kraken data in seconds
+        const formattedData: ChartPoint[] = ohlcData.map(({ time, close }) => ({ time: time * 1000, close }));
 
         setChartData(formattedData);
 
