@@ -73,7 +73,7 @@ const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
   // create reference to <canvas> (DOM node)
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // useEffect to fetch OHLC data from API
+  // useEffect to fetch OHLC data from API (dep: pair, timeFrame)
   useEffect(() => {
 
     const fetchChartData = async () => {
@@ -102,7 +102,7 @@ const CryptoChart = ({pair, timeFrame}: CryptoChartProps) => {
 
   }, [pair, timeFrame]);
 
-  // useEffect to Create Line Chart once canvas DOM has rendered
+  // useEffect to Create Line Chart once canvas DOM has rendered (dep: OHLCData)
   useEffect(() => {
 
     // Wait for <canvas> to be rendered

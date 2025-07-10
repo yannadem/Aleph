@@ -13,14 +13,14 @@
 }
 
 .alephPic {
-  width: 5svw;
+  width: 3svw;
   background-color: white;
-  padding: 2svw
+  padding: 1svw
 }
 
 .alephTxt {
   font-size: x-large;
-  padding: 2svw;
+  padding: 1svw;
   color: black;
   background-color: white;
 }

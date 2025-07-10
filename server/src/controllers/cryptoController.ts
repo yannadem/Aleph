@@ -5,7 +5,15 @@ interface KrakenTickerResponse {
   error: string[];
   result: {
     [pair: string]: {
+      a: string[];
+      b: string[];
       c: string[];
+      v: string[];
+      p: string[];
+      t: number[];
+      l: string[];
+      h: string[];
+      o: string;
     };
   };
 }
@@ -56,12 +64,25 @@ const getTicker = async (req: Request, res: Response): Promise<void> => {
     // Kraken Ticker for each pair, e.g. XXBTZUSD (BTCUSD)
     const assetTickerInfo = Object.keys(result)[0];
 
-    // Kraken last trade closed
+    // Kraken ticker data
+
+    // volumes on [1], [2]
+    const ask = result[assetTickerInfo].a[0];
+    const bid = result[assetTickerInfo].b[0];
     const lastTrade = result[assetTickerInfo].c[0];
 
+    // [0]= today , [1] = last 24 hours
+    const volume = result[assetTickerInfo].v[0];
+    const vwap = result[assetTickerInfo].p[0];
+    const numTrades = result[assetTickerInfo].t[0];
+    const low = result[assetTickerInfo].l[0];
+    const high = result[assetTickerInfo].h[0];
+    const open = result[assetTickerInfo].o;
+
     // Success path
-    res.status(200).json({ pair, lastTrade });
-    console.log(`response sent:${pair}: ${lastTrade}`)
+    res.status(200).json({ ask, bid, lastTrade, volume, vwap, numTrades, low, high, open});
+    console.log(`Ticker data sent for ${pair}`)
+    console.log(`open: ${open}`);
 
   } catch (error) {
 
