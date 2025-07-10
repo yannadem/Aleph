@@ -8,6 +8,7 @@ import axios from 'axios';
 interface CryptoChartProps {
   pair: string;
   timeFrame: number;
+  chartType: string;
 }
 
 interface OhlcPoint {
@@ -31,7 +32,7 @@ interface OhlcResponse {
 // Back End URL
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const ChartContainer = ({ pair, timeFrame }: CryptoChartProps) => {
+const ChartContainer = ({ pair, timeFrame, chartType }: CryptoChartProps) => {
 
   // state to store OHLC data
   const [chartData, setChartData] = useState<OhlcPoint[]>([]);
@@ -49,7 +50,9 @@ const ChartContainer = ({ pair, timeFrame }: CryptoChartProps) => {
         // destructuring response to only keep time & close
         const ohlcData: OhlcPoint[] = response.data.modData;
         // !! chartjs-adapter-date-fns work with time in milliseconds, Kraken data in seconds
-        const formattedData: OhlcPoint[] = ohlcData.map(({ time, open, high, low, close, vwap, volume, count }) => ({ time: time * 1000, open, high, low, close, vwap, volume, count }));
+        const formattedData: OhlcPoint[] = ohlcData.map((
+          { time, open, high, low, close, vwap, volume, count }) =>
+          ({ time: time * 1000, open, high, low, close, vwap, volume, count }));
 
         setChartData(formattedData);
 
@@ -69,8 +72,12 @@ const ChartContainer = ({ pair, timeFrame }: CryptoChartProps) => {
 
   return (
     <div>
-      <LineChart pair={pair} chartData={chartData}  />
-      <CandleStickChart pair={pair} chartData={chartData} />
+      {chartType === 'Line' &&
+        <LineChart pair={pair} chartData={chartData} />
+      }
+      {chartType === 'Candle Sticks' &&
+        <CandleStickChart pair={pair} chartData={chartData} />
+      }
     </div>
   );
 }

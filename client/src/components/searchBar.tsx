@@ -46,7 +46,7 @@ const SearchBar = ({setPair}: SearchBarProps) => {
         />
         <button
           type="submit">
-          Update
+          GO !
         </button>
       </form>
       <div style={{ color: "red" }}>{errorPair}</div>

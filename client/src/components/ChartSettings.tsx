@@ -1,9 +1,11 @@
 interface ChartSettingsProps {
   timeFrame: number;
+  chartType: string;
   setTimeFrame: React.Dispatch<React.SetStateAction<number>>;
+  setChartType: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ChartSettings = ({ timeFrame, setTimeFrame }: ChartSettingsProps) => {
+const ChartSettings = ({ timeFrame, setTimeFrame, chartType, setChartType }: ChartSettingsProps) => {
 
   // Possible times frames / time intervals (minutes)
   // Possible values: [1, 5, 15, 30, 60, 240, 1440, 10080, 21600]
@@ -19,6 +21,9 @@ const ChartSettings = ({ timeFrame, setTimeFrame }: ChartSettingsProps) => {
     {label: '15 days', value: 21600}
   ];
 
+  // Possible Chart Types
+  const allowedChartTypes = ['Line','Candle Sticks'];
+
   return (
     <div>
       <label htmlFor="time-frame-select">Time Frame</label>
@@ -30,6 +35,18 @@ const ChartSettings = ({ timeFrame, setTimeFrame }: ChartSettingsProps) => {
         {allowedTimeFrames.map((frame) => (
           <option key={frame.label} value={frame.value}>
             {frame.label}
+          </option>
+        ))}
+      </select>
+      <label htmlFor="chart-type-select">Chart Type</label>
+      <select
+        id="chart-type-select"
+        value={chartType}
+        onChange={(e) => setChartType(e.target.value)}
+      >
+        {allowedChartTypes.map((type) => (
+          <option key={type} value={type}>
+            {type}
           </option>
         ))}
       </select>

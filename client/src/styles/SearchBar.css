@@ -1,12 +1,19 @@
 * {
   padding: 5px;
+  font-size: medium;
+
 }
 
+input {
+  color: goldenrod;
+}
+
+
+
 button {
-  font-size: medium;
+  color: goldenrod;
   margin: 10px;
-  border: solid #272C35;
+  border: solid grey;
   background-color: #272C35;
   border-radius: 10px;
-  color: white;
 }
