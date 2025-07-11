@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/searchBar.css';
+import '../styles/SearchBar.css';
 
 interface SearchBarProps {
   // Set Active Pair

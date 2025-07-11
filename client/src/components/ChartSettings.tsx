@@ -1,3 +1,5 @@
+import '../styles/ChartSettings.css';
+
 interface ChartSettingsProps {
   timeFrame: number;
   chartType: string;
@@ -25,7 +27,7 @@ const ChartSettings = ({ timeFrame, setTimeFrame, chartType, setChartType }: Cha
   const allowedChartTypes = ['Line','Candle Sticks'];
 
   return (
-    <div>
+    <div className="settings">
       <label htmlFor="time-frame-select">Time Frame</label>
       <select
         id="time-frame-select"

@@ -1,3 +1,4 @@
+
 .mainBoard {
   display:flex;
   width: 100%;
@@ -8,5 +9,33 @@
 }
 
 .chartBox {
+  margin: 20px;
   width: 75%;
+}
+
+.chartTitle{
+  justify-items: center;
+}
+
+.logoBox {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.alephPic {
+  width: 3svw;
+  background-color: white;
+  padding: 1svw
+}
+
+.alephTxt {
+  font-size: x-large;
+  padding: 1svw;
+  color: black;
+  background-color: white;
 }

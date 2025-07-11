@@ -35,10 +35,12 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-      <div id="chartBox" className="chartBox">
-        <h2>{crypto} Chart</h2>
+      <div className="chartBox">
+        <div className="chartTitle">
+          <h2>{crypto} Chart</h2>
+        </div>
         <ChartSettings timeFrame={timeFrame} setTimeFrame={setTimeFrame} chartType={chartType} setChartType={setChartType} />
-        <ChartContainer pair={activePair} timeFrame={timeFrame} chartType={chartType}/>
+        <ChartContainer pair={activePair} timeFrame={timeFrame} chartType={chartType} />
       </div>
     </div>
   )

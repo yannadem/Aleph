@@ -2,26 +2,6 @@
   background-color:#181A21;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color:white;
-
+  padding: 5px;
 }
 
-.logoBox {
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  color: black;
-  background-color: white;
-}
-
-.alephPic {
-  width: 3svw;
-  background-color: white;
-  padding: 1svw
-}
-
-.alephTxt {
-  font-size: x-large;
-  padding: 1svw;
-  color: black;
-  background-color: white;
-}

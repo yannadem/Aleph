@@ -91,6 +91,7 @@ const LineChart = ({pair, chartData}: LineChartProps) => {
             type: 'time',
           },
         },
+        animation: false,
       },
 
     })
