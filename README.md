@@ -1,144 +1,98 @@
-# 📊 Aleph
+# 📈 Aleph
 
-Aleph is a streamlined platform for tracking crypto and FX assets, designed to simplify investment decisions through a unified, clear, and performant interface.
+_Aleph is a streamlined crypto and FX research dashboard. It fetches market data from the Kraken API to help users analyze asset prices and trends with visual clarity and speed._
 
-📚 Table of Contents
+> ⚠️ This is an early-stage MVP (Minimum Viable Product). Currently, only Crypto and FX pairs from Kraken are supported.
 
-About
+---
 
-Features
+## 📑 Table of Contents
 
-Screenshots
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Tech Stack](#tech-stack)
+- [Setup & Installation](#setup--installation)
+- [Current Limitations](#current-limitations)
+- [Future Roadmap](#future-roadmap)
+- [License](#license)
 
-Tech Stack
+---
 
-Getting Started
+## 🚀 Features
 
-Usage
+- Search for any **Crypto/FX pair** (Kraken-supported)
+- View **interactive line and candlestick charts** powered by Chart.js
+- Fetch and display **OHLC ticker data** with rounding and formatting
+- Dynamic chart rendering on search submit
+- Simple and responsive layout
 
-Roadmap
+---
 
-Limitations
+## 🖼️ Screenshots
 
-License
+*Coming soon*
 
-🧠 About
-Aleph centralises real-time market data to help traders and analysts gain instant insights into selected crypto and FX pairs. Its modular dashboard architecture enables rapid data ingestion and visualisation with minimal noise. While it currently supports assets via the Kraken API, future versions will support stocks, ETFs, and macroeconomic indicators.
+---
 
-✨ Features
+## 🛠️ Tech Stack
 
-  ✅ Currently Implemented
+### Frontend
+- React + Vite
+- TypeScript
+- Chart.js + [`chartjs-chart-financial`](https://github.com/chartjs/chartjs-chart-financial) for candlesticks
+- Axios for API calls
+- CSS Modules (no Tailwind or Chakra used yet)
 
-  📈 Historical Price Charts: Line and candlestick charts using OHLC data
+### Data Source
+- [Kraken API](https://docs.kraken.com/rest/)
 
-  🔍 Symbol Search: Enter a crypto/FX pair to fetch data
+---
 
-  💬 Modular Chart Container: Swappable views for line and candlestick
+## ⚙️ Setup & Installation
 
-  💱 Bid/Ask & Ticker Info: Display fetched from Kraken ticker endpoint
+### Prerequisites
 
-  🧮 Data Formatting Utilities: Rounding, comma separation, etc.
+- Node.js (>= 18)
+- npm
 
-🔜 In Progress / Planned
+### Local Setup
 
-  🧠 Curated News Feed (tailored headlines per asset)
+```bash
+git clone https://github.com/your-username/aleph.git
+cd aleph
+npm install
+npm run dev
+```
 
-  📅 Economic Calendar (events filtered by relevance)
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
-  📊 Analytics Dashboard (Z-spread, volatility, yield, etc.)
+> 🧪 No API key required — Kraken public endpoints are free to use.
 
-  📌 Watchlist Support (save and track preferred assets)
+---
 
-  💡 Smart Suggestions (correlated assets, hedges)
+## 🚧 Current Limitations
 
-  📤 Live Ticker Updates (currently manual refresh)
+- ✅ Only Crypto and FX pairs from Kraken supported
+- ❌ Ticker not live — data is manually fetched on search submit
+- ❌ No news or economic indicators implemented yet
+- ❌ No watchlist or user login functionality
+- ❌ Framer Motion installed but not in use
+- ❌ No visual styling frameworks used (e.g., Tailwind, Chakra)
 
-  💼 Portfolio Management (positions, P&L tracking)
+---
 
-🖼️ Screenshots
-Coming soon...
+## 🧭 Future Roadmap
 
-⚙️ Tech Stack
+- 🔜 **Live Ticker Updates**
+- 🔜 **Curated News Feed** (NewsAPI or custom scrapers)
+- 🔜 **Economic Calendar** filtered by asset
+- 🔜 **Analytics Dashboard** (volatility, Z-spread, yield, etc.)
+- 🔜 **User Accounts & Watchlists**
+- 🔜 **Smart Suggestions**: correlated assets, hedging options
+- 🔜 **Portfolio Tracker**: positions & P&L tracking
 
-Frontend
+---
 
-  React – UI Library
+## 📄 License
 
-  TypeScript – Strong typings
-
-  Vite – Build tool
-
-  Chart.js + chartjs-chart-financial – Candlestick & line charts
-
-  Date-fns adapter – Time parsing for charts
-
-Backend
-
-  Express – REST API
-
-  TypeScript – Strongly typed
-
-  Kraken API – Only data provider for now (OHLC, ticker)
-
-🚀 Getting Started
-
-  1. Prerequisites
-  Node.js
-
-  No external API keys required — Kraken API is free and public
-
-  2. Installation
-  bash
-  Copy
-  Edit
-  # Install dependencies
-  npm install
-
-  # Run dev server (frontend and backend should be set up separately if applicable)
-  npm run dev
-
-🧭 Usage
-
-  Start typing a crypto/FX pair (e.g. BTC/USD) in the search bar.
-
-  Submit to trigger:
-
-  OHLC fetch
-
-  Ticker fetch
-
-  View:
-
-  Candlestick or Line chart
-
-  Last trade price, bid/ask info
-
-🛣 Roadmap
-
-  Add asset categories beyond crypto (stocks, bonds, ETFs)
-
-  Add backend caching layer for better performance
-
-  Real-time websocket ticker updates
-
-  News integration (NewsAPI or custom scraping)
-
-  Watchlist and saved state
-
-  Framer Motion UI/UX animations
-
-⚠️ Limitations
-
-  Only crypto and FX assets are supported for now (via Kraken)
-
-  No live ticker — refresh happens on user submit
-
-  No news or economic events yet
-
-  Framer Motion, Tailwind/CSS modules are not currently in use
-
-  Charts limited to up to 60 OHLC data points
-
-📄 License
-
-  MIT — feel free to fork, improve, and contribute.
+MIT (or add your own)
