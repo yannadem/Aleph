@@ -14,7 +14,6 @@ _Aleph is a streamlined crypto and FX research dashboard. It fetches market data
 - [Setup & Installation](#setup--installation)
 - [Current Limitations](#current-limitations)
 - [Future Roadmap](#future-roadmap)
-- [License](#license)
 
 ---
 
@@ -34,14 +33,18 @@ _Aleph is a streamlined crypto and FX research dashboard. It fetches market data
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack up to date
+
+### Backend
+- Node.js + Express
+- Axios
 
 ### Frontend
 - React + Vite
 - TypeScript
 - Chart.js + [`chartjs-chart-financial`](https://github.com/chartjs/chartjs-chart-financial) for candlesticks
 - Axios for API calls
-- CSS Modules (no Tailwind or Chakra used yet)
+- CSS
 
 ### Data Source
 - [Kraken API](https://docs.kraken.com/rest/)
@@ -57,9 +60,22 @@ _Aleph is a streamlined crypto and FX research dashboard. It fetches market data
 
 ### Local Setup
 
+Open first terminal:
 ```bash
 git clone https://github.com/your-username/aleph.git
 cd aleph
+
+cd server
+npm install
+npm run dev
+```
+
+Open second terminal:
+```bash
+git clone https://github.com/your-username/aleph.git
+cd aleph
+
+cd client
 npm install
 npm run dev
 ```
@@ -90,9 +106,3 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 - 🔜 **User Accounts & Watchlists**
 - 🔜 **Smart Suggestions**: correlated assets, hedging options
 - 🔜 **Portfolio Tracker**: positions & P&L tracking
-
----
-
-## 📄 License
-
-MIT (or add your own)
