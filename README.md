@@ -29,8 +29,8 @@ _Aleph is a streamlined crypto and FX research dashboard. It fetches market data
 
 ## Screenshots
 
-[![Candle_EURGBP](./client/docs/screenshots/Candle_EURGBP.png)]
-[![Line_BTCUSD](./client/docs/screenshots/Line_BTCUSD.png)]
+![Candle_EURGBP](./client/docs/screenshots/Candle_EURGBP.png)
+![Line_BTCUSD](./client/docs/screenshots/Line_BTCUSD.png)
 
 ---
 
