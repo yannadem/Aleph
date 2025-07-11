@@ -1,9 +1,11 @@
-📈 Aleph
-An early-stage crypto & FX dashboard for faster investment decisions.
+# 📊 Aleph
 
-Aleph centralises financial data for cryptocurrency and FX markets using the Kraken API. The app allows users to select a crypto/FX pair and view a clear, concise snapshot of historical price charts and ticker data. The long-term goal is to simplify multi-asset investing with a unified, intuitive interface — starting with digital assets.
+Aleph is a streamlined platform for tracking crypto and FX assets, designed to simplify investment decisions through a unified, clear, and performant interface.
 
-📋 Table of Contents
+📚 Table of Contents
+
+About
+
 Features
 
 Screenshots
@@ -16,113 +18,127 @@ Usage
 
 Roadmap
 
-✅ Features (Current)
-🧩 Core Functionality (Crypto & FX only)
-Pair Selection: Choose crypto/FX trading pairs (e.g., BTC/USD, ETH/EUR)
+Limitations
 
-Ticker Display: See bid, ask, and last traded price (manual refresh on pair change)
+License
 
-OHLC Charts:
+🧠 About
+Aleph centralises real-time market data to help traders and analysts gain instant insights into selected crypto and FX pairs. Its modular dashboard architecture enables rapid data ingestion and visualisation with minimal noise. While it currently supports assets via the Kraken API, future versions will support stocks, ETFs, and macroeconomic indicators.
 
-📉 Line Chart (close price over time)
+✨ Features
 
-🕯️ Candlestick Chart (OHLC representation)
+  ✅ Currently Implemented
 
-Timeframes: Currently shows ~700 data points from Kraken (1-min to 15 days granularity)
+  📈 Historical Price Charts: Line and candlestick charts using OHLC data
 
-Data Source: Kraken REST API
+  🔍 Symbol Search: Enter a crypto/FX pair to fetch data
+
+  💬 Modular Chart Container: Swappable views for line and candlestick
+
+  💱 Bid/Ask & Ticker Info: Display fetched from Kraken ticker endpoint
+
+  🧮 Data Formatting Utilities: Rounding, comma separation, etc.
+
+🔜 In Progress / Planned
+
+  🧠 Curated News Feed (tailored headlines per asset)
+
+  📅 Economic Calendar (events filtered by relevance)
+
+  📊 Analytics Dashboard (Z-spread, volatility, yield, etc.)
+
+  📌 Watchlist Support (save and track preferred assets)
+
+  💡 Smart Suggestions (correlated assets, hedges)
+
+  📤 Live Ticker Updates (currently manual refresh)
+
+  💼 Portfolio Management (positions, P&L tracking)
 
 🖼️ Screenshots
-(To be added soon: Candlestick chart, search interface, basic dashboard layout)
+Coming soon...
 
 ⚙️ Tech Stack
-🖥️ Frontend
-React – UI library
 
-TypeScript – Type safety
+Frontend
 
-Vite – Fast bundler & dev server
+  React – UI Library
 
-Chart.js + chartjs-chart-financial – For line and candlestick charts
+  TypeScript – Strong typings
 
-❌ Not yet used: Framer Motion, TailwindCSS, Chakra UI
+  Vite – Build tool
 
-🌐 Backend
-Node.js + Express – Server to proxy Kraken API calls
+  Chart.js + chartjs-chart-financial – Candlestick & line charts
 
-TypeScript – Typed server logic
+  Date-fns adapter – Time parsing for charts
 
-🔐 No API keys required — Kraken endpoints used are publicly accessible
+Backend
+
+  Express – REST API
+
+  TypeScript – Strongly typed
+
+  Kraken API – Only data provider for now (OHLC, ticker)
 
 🚀 Getting Started
-Prerequisites
-Node.js (v18+ recommended)
 
-1. Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-username/aleph.git
-cd aleph
-2. Set up environment variable
-Create a .env file in the client folder with:
+  1. Prerequisites
+  Node.js
 
-ini
-Copy code
-VITE_API_URL=http://localhost:3000
-3. Install dependencies
-In the client folder:
+  No external API keys required — Kraken API is free and public
 
-bash
-Copy code
-npm install
-In the server folder:
+  2. Installation
+  bash
+  Copy
+  Edit
+  # Install dependencies
+  npm install
 
-bash
-Copy code
-npm install
-4. Start the application
-Run the backend server:
+  # Run dev server (frontend and backend should be set up separately if applicable)
+  npm run dev
 
-bash
-Copy code
-cd server
-npm run dev
-In another terminal, start the frontend:
+🧭 Usage
 
-bash
-Copy code
-cd client
-npm run dev
-Then open the Vite link in your browser (usually http://localhost:5173).
+  Start typing a crypto/FX pair (e.g. BTC/USD) in the search bar.
 
-🧪 Usage
-1. Select a crypto/FX pair
-Type or select from available trading pairs (e.g., XBTUSD, ETHEUR).
+  Submit to trigger:
 
-2. View charts and ticker
-Candlestick and line charts render based on latest OHLC data from Kraken.
+  OHLC fetch
 
-Ticker values refresh manually on pair or time frame change.
+  Ticker fetch
 
-🔭 Roadmap
-In Progress / Planned
- ♻️ Live Ticker (WebSocket integration)
+  View:
 
- 🗞️ News Feed (curated per asset)
+  Candlestick or Line chart
 
- 🧮 Analytics Dashboard: Z-spread, volatility, yield
+  Last trade price, bid/ask info
 
- 🗓️ Economic Calendar: Macro events per asset
+🛣 Roadmap
 
- ⭐ Watchlist: Save and track favourite assets
+  Add asset categories beyond crypto (stocks, bonds, ETFs)
 
- 🧠 Smart Suggestions: Find correlated assets, hedges
+  Add backend caching layer for better performance
 
- 💼 Positions & P&L Tracker
+  Real-time websocket ticker updates
 
- 🧪 Unit tests + Integration tests
+  News integration (NewsAPI or custom scraping)
 
- 🌍 Add support for stocks, ETFs, and bonds
+  Watchlist and saved state
 
-🧠 Philosophy
-Aleph is built to fight information overload. Instead of jumping between 10 tabs, investors should have everything that matters — price data, context, risks — on one single page.
+  Framer Motion UI/UX animations
+
+⚠️ Limitations
+
+  Only crypto and FX assets are supported for now (via Kraken)
+
+  No live ticker — refresh happens on user submit
+
+  No news or economic events yet
+
+  Framer Motion, Tailwind/CSS modules are not currently in use
+
+  Charts limited to up to 60 OHLC data points
+
+📄 License
+
+  MIT — feel free to fork, improve, and contribute.
